@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
+  m_Name: PhotonServerSettings
+  m_EditorClassIdentifier: 
+  AppSettings:
+    AppIdRealtime: daa0a820-991f-4f19-bc44-631f92c275a6
+    AppIdFusion: 
+    AppIdChat: 
+    AppIdVoice: 2ae86907-1f22-4a2d-be7a-c750ebed099a
+    AppVersion: 0.1
+    UseNameServer: 1
+    FixedRegion: EU
+    Server: 
+    Port: 0
+    ProxyServer: 
+    Protocol: 0
+    EnableProtocolFallback: 1
+    AuthMode: 0
+    EnableLobbyStatistics: 0
+    NetworkLogging: 1
+  DevRegion: eu
+  PunLogging: 0
+  EnableSupportLogger: 0
+  RunInBackground: 1
+  StartInOfflineMode: 0
+  RpcList:
+  - AddListTriggerTaskToList
+  - AddToQueue
+  - AddTriggerTaskToList
+  - CantHearYou
+  - ChangeAngle
+  - ChangeColor
+  - ChangeIntensity
+  - ChangeRandomizer
+  - ChangeRange
+  - ChangeTriggerTaskOrderDown
+  - ChangeTriggerTaskOrderUp
+  - ChangeType
+  - ClickRpc
+  - CreateListTriggerEvent
+  - CreateTriggerEvent
+  - DeleteTriggerEvent
+  - DestroyRpc
+  - DiffuseMessage
+  - HeresWhy
+  - InitTickForOthers
+  - LoadLearningSpace
+  - loadMenu
+  - OnChangeLinkForOthers
+  - PauseAudio
+  - PauseAudioOrVideo
+  - PlayAudio
+  - PlayAudioOrVideo
+  - PlayRaiseHandAudio
+  - RemoveTriggerTaskFromList
+  - RPC_AllowHandRasing
+  - RPC_ChangeMaterialsColors
+  - RPC_ChangePlayerAudioRange
+  - RPC_ChangeSpawnPosition
+  - RPC_ChangeWebViewURL
+  - RPC_ClearWhiteboard
+  - RPC_CreateAnimation
+  - RPC_CreateStep
+  - RPC_DeleteAnimation
+  - RPC_DeleteStep
+  - RPC_DrawLine
+  - RPC_EnableSitting
+  - RPC_PauseAnimation
+  - RPC_Photon_Props
+  - RPC_Photon_Props_and_spawn
+  - RPC_PlayAnimation
+  - RPC_PlayAnimationStep
+  - RPC_ResumeAnimation
+  - RPC_Set_Object_Animation
+  - RPC_Set_Object_Colliders
+  - RPC_Set_Object_DisableSync
+  - RPC_Set_Object_Env
+  - RPC_Set_Object_Grabbable
+  - RPC_Set_Object_Gravity
+  - RPC_Set_Object_Kinematic
+  - RPC_Set_Object_Position_Frozen
+  - RPC_Set_Object_Rotation_Frozen
+  - RPC_Set_Object_Trigger
+  - RPC_SetActive
+  - RPC_SetAdmin
+  - RPC_SetAnimationLoop
+  - RPC_SetBanned
+  - RPC_SetCounterVariableValue
+  - RPC_SetFrozen
+  - RPC_SetMeshRenderer
+  - RPC_SetMuted
+  - RPC_SetName
+  - RPC_SetObjectHaveAnimation
+  - RPC_SetParent
+  - RPC_SetStepEndPosition
+  - RPC_SetStepStartPosition
+  - RPC_SitRandom
+  - RPC_StopAnimation
+  - RPC_SYNC_VEHICLE
+  - RPCActivateLaser
+  - SelectEnvironementEvent
+  - sendChatMessage
+  - SetAudioVolume
+  - SetDay
+  - SetLoop
+  - SetMaxDistance
+  - SetNight
+  - SetSpawnedFromApi
+  - SetTypeManualy
+  - StartIot
+  - StartNetworkGrabbing
+  - StartTasksList
+  - StartTriggerEventPerma
+  - StopAudio
+  - StopAudioOrVideo
+  - StopNetworkGrabbing
+  - StopTasksList
+  - StopTriggerEventPerma
+  - TagObjectRPC
+  - UpdateTriggerEvent
+  DisableAutoOpenWizard: 1
+  ShowSettings: 1
+  DevRegionSetOnce: 1

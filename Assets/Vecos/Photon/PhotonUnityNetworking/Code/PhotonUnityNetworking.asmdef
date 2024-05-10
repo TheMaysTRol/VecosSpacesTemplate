@@ -1,0 +1,20 @@
+{
+    "name": "PhotonUnityNetworking",
+    "rootNamespace": "",
+    "references": [
+        "PhotonRealtime",
+        "Unity.Addressables",
+        "Unity.ResourceManager",
+        "Unity.Collections",
+        ""
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
