@@ -7,6 +7,7 @@ public class SDKBuildChcker : EditorWindow
 {
 
     private GameObject spawnManagerPrefab; // Reference to the SpawnManager prefab
+    private GameObject playerSetupPrefab; // Reference to the SpawnManager prefab
 
 
     [MenuItem("Vecos/Build checker")]
@@ -21,15 +22,67 @@ public class SDKBuildChcker : EditorWindow
     {
         // Load the SpawnManager prefab
         spawnManagerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Vecos/Tools/Prefabs/SpawnManagerPrefab.prefab");
+        playerSetupPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Vecos/Tools/Prefabs/PlayerSetup.prefab");
     }
 
     private void OnGUI()
     {
+        DrawPlayerButtons();
+
         DrawCameraButtons();
 
         CheckSpawnManager();
 
+        CheckPlayerSetup();
+
         DrawAddressablePathVerification();
+    }
+
+
+    private void DrawPlayerButtons()
+    {
+        EditorGUILayout.Space();
+        GUILayout.Label("Players check", EditorStyles.boldLabel);
+        Tool_PlayerExistance[] players = FindObjectsOfType<Tool_PlayerExistance>();
+
+        if (players.Length > 0)
+        {
+            EditorGUILayout.HelpBox("You must delete the players.", MessageType.Error);
+        }
+        else
+        {
+            EditorGUILayout.HelpBox("Players check is successful.", MessageType.Info);
+        }
+
+        foreach (Tool_PlayerExistance player in players)
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            EditorGUILayout.LabelField(player.name);
+
+            if (GUILayout.Button("Select", GUILayout.Width(60)))
+            {
+                Selection.activeGameObject = player.gameObject;
+            }
+
+            if (GUILayout.Button("Delete", GUILayout.Width(60)))
+            {
+                if (EditorUtility.DisplayDialog("Delete Player", "Are you sure you want to delete the Player " + player.name + "?", "Yes", "No"))
+                {
+                    // Record the camera deletion for undo
+                    Undo.DestroyObjectImmediate(player.gameObject);
+                }
+            }
+
+            if (GUILayout.Button("Disable", GUILayout.Width(60)))
+            {
+                // Record the camera disable action for undo
+                Undo.RecordObject(player.gameObject, "Disable player");
+                player.gameObject.SetActive(false);
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
     }
 
     private void DrawCameraButtons()
@@ -102,7 +155,6 @@ public class SDKBuildChcker : EditorWindow
             }
         }
     }
-
     private void CreateSpawnManager()
     {
         if (GUILayout.Button("Create SpawnManager"))
@@ -119,6 +171,43 @@ public class SDKBuildChcker : EditorWindow
             }
         }
     }
+
+
+    private void CheckPlayerSetup()
+    {
+        EditorGUILayout.Space();
+        GUILayout.Label("Player setup check", EditorStyles.boldLabel);
+        SDK_PlayerSetup playersetup = GameObject.FindAnyObjectByType<SDK_PlayerSetup>();
+
+        if (playersetup == null)
+        {
+            EditorGUILayout.HelpBox("Player setup does not exist in the scene.", MessageType.Error);
+            CreatePlayerSetup();
+        }
+        else
+        {
+            EditorGUILayout.HelpBox("Player setup check is successful.", MessageType.Info);
+        }
+    }
+
+    private void CreatePlayerSetup()
+    {
+        if (GUILayout.Button("Create player setup"))
+        {
+            if (playerSetupPrefab != null)
+            {
+                GameObject playerSetupInstance = PrefabUtility.InstantiatePrefab(playerSetupPrefab) as GameObject;
+                Undo.RegisterCreatedObjectUndo(playerSetupInstance, "Create PlayerSetup");
+                Selection.activeGameObject = playerSetupInstance;
+            }
+            else
+            {
+                Debug.LogError("player setup prefab is missing. Please assign the prefab in the SDKManager script.");
+            }
+        }
+    }
+
+
 
     private void DrawAddressablePathVerification()
     {
@@ -144,7 +233,7 @@ public class SDKBuildChcker : EditorWindow
             addressablePathMessage = "Wrong addressable path. Expected: " + expectedPath;
             if (GUILayout.Button("Fix Path"))
             {
-                settings.profileSettings.SetValue(settings.activeProfileId, "Remote.LoadPath",expectedPath);
+                settings.profileSettings.SetValue(settings.activeProfileId, "Remote.LoadPath", expectedPath);
             }
         }
 
