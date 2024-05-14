@@ -18,6 +18,5 @@ public class SpawnManager : MonoBehaviour
     {
         SDK_Player.Instance.onPlayerSpawn.RemoveListener(OnSpawn);
         player.transform.position = spawnPositions[Random.Range(0, spawnPositions.Count)].position;
-        player.transform.rotation = spawnPositions[Random.Range(0, spawnPositions.Count)].rotation;
     }
 }

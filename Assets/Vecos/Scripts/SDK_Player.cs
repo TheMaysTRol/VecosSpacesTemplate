@@ -27,6 +27,7 @@ public class SDK_Player : MonoBehaviour
 
     private void OnPlayerSpawn(GameObject player)
     {
+        onPlayerSpawn.RemoveListener(OnPlayerSpawn);
         playerObject = player;
         GetCamera();
     }
