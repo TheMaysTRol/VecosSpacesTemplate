@@ -37,6 +37,24 @@ In the groups window you will find an exisiting default group called "Addressabl
 
 - You can now add objects to your scene(3d models,ui ...)
 
-- For me I will just create the ground
+Example scene : 
 
-  
+![](https://i.imgur.com/nvExiHr.png)
+
+
+## Spawn a test player in the scene
+
+ To spawn a player in the scene for testing purposes, follow these steps:
+ 
+ - Search for 'Vecos' in the toolbar.
+   ![](https://i.imgur.com/C4RVNqH.png)
+   
+ - Navigate to Vecos -> Testing Scene.
+   
+   ![](https://i.imgur.com/jBdNO5A.png)
+   
+ - If you're testing on a PC or mobile device, click on 'Create PC Player.
+   ![](https://i.imgur.com/Iwk3hwE.png)
+   
+ - If you're testing on a VR device, click on 'Create VR Player.
+   ![](https://i.imgur.com/4t3EtPw.png)
