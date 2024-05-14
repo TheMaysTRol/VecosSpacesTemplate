@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(-999)]
 public class SDK_Player : MonoBehaviour
 {
 
