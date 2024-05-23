@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneSettingsListFoldoutOpen: 1
   MinViewIdPerScene:
-  - sceneAsset: {fileID: 102900000, guid: c1f93cd59a3cc414f902d16b2fd8e927, type: 3}
-    sceneName: DemoScene2
-    minViewId: 100
-  - sceneAsset: {fileID: 102900000, guid: 5c670c81624a5d7458f58a55c6e9d995, type: 3}
-    sceneName: DemoScene
+  - sceneAsset: {fileID: 102900000, guid: 702de92217a981d468e480ddf34612cd, type: 3}
+    sceneName: VerlaineLite 1
     minViewId: 100

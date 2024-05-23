@@ -1,6 +1,8 @@
 using Photon.Pun;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
 public class SDK_ObjectControl : MonoBehaviour
@@ -10,9 +12,14 @@ public class SDK_ObjectControl : MonoBehaviour
     public bool isDistanceGrabbable = true;
     public UnityEvent<GameObject> onGrabObject;
     public UnityEvent<GameObject> onReleaseObject;
+    public PunSceneSettings sceneSettings;
 
     public void OnEnable()
     {
+#if UNITY_EDITOR
+        sceneSettings = AssetDatabase.LoadAssetAtPath<PunSceneSettings>("Assets/Vecos/Photon/PhotonUnityNetworking/Code/Editor/PunSceneSettingsFile.asset");
+        OnSceneOpened();
+#endif
         PhotonView pv = this.gameObject.GetComponent<PhotonView>();
         if (!pv)
         {
@@ -26,6 +33,18 @@ public class SDK_ObjectControl : MonoBehaviour
         {
             pvv = this.gameObject.AddComponent<PhotonTransformView>();
         }
+    }
+
+    private void OnSceneOpened()
+    {
+#if UNITY_EDITOR
+        sceneSettings.MinViewIdPerScene.Clear();
+        var set = new SceneSetting();
+        set.sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(SceneManager.GetActiveScene().path);
+        set.sceneName = SceneManager.GetActiveScene().name;
+        set.minViewId = 100;
+        sceneSettings.MinViewIdPerScene.Add(set);
+#endif
     }
 
     public void OnDestroy()

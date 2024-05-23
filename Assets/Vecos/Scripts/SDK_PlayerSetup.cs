@@ -10,10 +10,10 @@ public class SDK_PlayerSetup : MonoBehaviour
     }
 
     [Header("PC & Mobile specific")]
-    public float PcPlayerSpeed = 2.5f;
-    public float PcPlayerShiftSpeed = 5f;
-    public float jumpFroce = 4f;
-    public float gravityForce = 9.8f;
+    public float PcPlayerSpeed = 5;
+    public float PcPlayerShiftSpeed = 7f;
+    public float jumpFroce = 2.5f;
+    public float gravityForce = -18;
 
     [Header("VR specific")]
     public TrackedPoseDriver.TrackingType trackingType = TrackedPoseDriver.TrackingType.RotationAndPosition;
