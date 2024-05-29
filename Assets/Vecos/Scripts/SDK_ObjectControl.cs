@@ -88,11 +88,11 @@ public class SDK_ObjectControl : MonoBehaviour
     {
         if (argu.interactorObject.transform.name.ToLower().Contains("right"))
         {
-            onGrabObject.Invoke(this.gameObject, Hand.RightHand);
+            onReleaseObject.Invoke(this.gameObject, Hand.RightHand);
         }
         else
         {
-            onGrabObject.Invoke(this.gameObject, Hand.LeftHand);
+            onReleaseObject.Invoke(this.gameObject, Hand.LeftHand);
         }
     }
 
