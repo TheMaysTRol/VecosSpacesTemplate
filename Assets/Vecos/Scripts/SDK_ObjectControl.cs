@@ -7,11 +7,17 @@ using UnityEngine.SceneManagement;
 [ExecuteInEditMode]
 public class SDK_ObjectControl : MonoBehaviour
 {
+    public enum Hand{
+        LeftHand,
+        RightHand,
+        PC
+    }
+
     [Header("Grabbing specific")]
     public bool isGrabbable = true;
     public bool isDistanceGrabbable = true;
-    public UnityEvent<GameObject> onGrabObject;
-    public UnityEvent<GameObject> onReleaseObject;
+    public UnityEvent<GameObject,Hand> onGrabObject;
+    public UnityEvent<GameObject,Hand> onReleaseObject;
     public PunSceneSettings sceneSettings;
 
     public void OnEnable()
