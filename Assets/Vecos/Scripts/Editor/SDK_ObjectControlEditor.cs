@@ -134,6 +134,10 @@ public class SDK_ObjectControlEditor : Editor
 
     public void CleanUp()
     {
+        if (!oldTarget)
+        {
+            return;
+        }
         PhotonView pv = oldTarget.GetComponent<PhotonView>();
         if (pv)
         {

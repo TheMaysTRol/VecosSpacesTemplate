@@ -1,5 +1,4 @@
 using Photon.Pun;
-using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +9,7 @@ public class SDK_ObjectControl : MonoBehaviour
 {
     public enum Hand
     {
+        None,
         LeftHand,
         RightHand,
         PC
