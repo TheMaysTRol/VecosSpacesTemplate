@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -56,14 +57,18 @@ public class SDK_ObjectControl : MonoBehaviour
         if (grabbableLocal)
         {
             grabbableLocal.selectEntered.AddListener(OnGrabbed);
+            grabbableLocal.selectExited.AddListener(OnReleased);
         }
     }
+
+
 
     private void OnDisable()
     {
         if (grabbableLocal)
         {
             grabbableLocal.selectEntered.RemoveListener(OnGrabbed);
+            grabbableLocal.selectExited.RemoveListener(OnReleased);
         }
     }
 
@@ -73,6 +78,21 @@ public class SDK_ObjectControl : MonoBehaviour
         if (grabbableLocal)
         {
             grabbableLocal.selectEntered.AddListener(OnGrabbed);
+            grabbableLocal.selectExited.AddListener(OnReleased);
+        }
+    }
+
+
+
+    private void OnReleased(SelectExitEventArgs argu)
+    {
+        if (argu.interactorObject.transform.name.ToLower().Contains("right"))
+        {
+            onGrabObject.Invoke(this.gameObject, Hand.RightHand);
+        }
+        else
+        {
+            onGrabObject.Invoke(this.gameObject, Hand.LeftHand);
         }
     }
 
