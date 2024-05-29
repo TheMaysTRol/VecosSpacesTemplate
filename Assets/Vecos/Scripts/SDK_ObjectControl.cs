@@ -18,7 +18,9 @@ public class SDK_ObjectControl : MonoBehaviour
     public bool isDistanceGrabbable = true;
     public UnityEvent<GameObject,Hand> onGrabObject;
     public UnityEvent<GameObject,Hand> onReleaseObject;
+#if UNITY_EDITOR
     public PunSceneSettings sceneSettings;
+#endif
 
     public void OnEnable()
     {
