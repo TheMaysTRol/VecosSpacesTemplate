@@ -4251,6 +4251,7 @@ GameObject:
   - component: {fileID: 4518589751524174107}
   - component: {fileID: 80995733316037193}
   - component: {fileID: 3221625058046832407}
+  - component: {fileID: 5065322210204695967}
   m_Layer: 0
   m_Name: VRPlayer
   m_TagString: Untagged
@@ -4347,6 +4348,21 @@ MonoBehaviour:
   m_LocomotionProvider: {fileID: 0}
   m_MinHeight: 0
   m_MaxHeight: Infinity
+--- !u!114 &5065322210204695967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137007696216910908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c12d80cfb532d4a99f3502179a5c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isVr: 1
+  rightHand: {fileID: 2330914861128006220}
+  leftHand: {fileID: 8958595789112291204}
 --- !u!1 &7191592878650915609
 GameObject:
   m_ObjectHideFlags: 0

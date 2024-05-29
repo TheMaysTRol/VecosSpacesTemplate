@@ -1,13 +1,15 @@
 using Photon.Pun;
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
-[ExecuteInEditMode]
 public class SDK_ObjectControl : MonoBehaviour
 {
-    public enum Hand{
+    public enum Hand
+    {
         LeftHand,
         RightHand,
         PC
@@ -16,10 +18,16 @@ public class SDK_ObjectControl : MonoBehaviour
     [Header("Grabbing specific")]
     public bool isGrabbable = true;
     public bool isDistanceGrabbable = true;
-    public UnityEvent<GameObject,Hand> onGrabObject;
-    public UnityEvent<GameObject,Hand> onReleaseObject;
+    public UnityEvent<GameObject, Hand> onGrabObject;
+    public UnityEvent<GameObject, Hand> onReleaseObject;
+
+    [Header("Networking specific")]
+    public bool networked = true;
+
+
+    private XRGrabInteractable grabbableLocal;
 #if UNITY_EDITOR
-    public PunSceneSettings sceneSettings;
+    private PunSceneSettings sceneSettings;
 #endif
 
     public void OnEnable()
@@ -40,8 +48,46 @@ public class SDK_ObjectControl : MonoBehaviour
         if (!pvv)
         {
             pvv = this.gameObject.AddComponent<PhotonTransformView>();
+            pvv.m_SynchronizeScale = true;
+            pvv.m_UseLocal = false;
+        }
+
+        grabbableLocal = this.GetComponent<XRGrabInteractable>();
+        if (grabbableLocal)
+        {
+            grabbableLocal.selectEntered.AddListener(OnGrabbed);
         }
     }
+
+    private void OnDisable()
+    {
+        if (grabbableLocal)
+        {
+            grabbableLocal.selectEntered.RemoveListener(OnGrabbed);
+        }
+    }
+
+    public void Start()
+    {
+        grabbableLocal = this.GetComponent<XRGrabInteractable>();
+        if (grabbableLocal)
+        {
+            grabbableLocal.selectEntered.AddListener(OnGrabbed);
+        }
+    }
+
+    private void OnGrabbed(SelectEnterEventArgs argu)
+    {
+        if (argu.interactorObject.transform.name.ToLower().Contains("right"))
+        {
+            onGrabObject.Invoke(this.gameObject, Hand.RightHand);
+        }
+        else
+        {
+            onGrabObject.Invoke(this.gameObject, Hand.LeftHand);
+        }
+    }
+
 
     private void OnSceneOpened()
     {
@@ -55,26 +101,6 @@ public class SDK_ObjectControl : MonoBehaviour
 #endif
     }
 
-    public void OnDestroy()
-    {
-        PhotonView pv = this.gameObject.GetComponent<PhotonView>();
-        if (pv)
-        {
-            DestroyImmediate(pv);
-        }
-
-        PhotonTransformView pvv = this.gameObject.GetComponent<PhotonTransformView>();
-        if (pvv)
-        {
-            DestroyImmediate(pvv);
-        }
-    }
-    public void OnObjectGrabbedDissapear(GameObject selectedObj)
-    {
-        if (selectedObj == null)
-            return;
-        Debug.Log("scaled");
-        selectedObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-    }
-
 }
+
+

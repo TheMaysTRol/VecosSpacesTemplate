@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Tool_PlayerExistance : MonoBehaviour
 {
     public static Tool_PlayerExistance Instance;
+
+    public bool isVr = false;
+    public XRRayInteractor rightHand, leftHand;
 
     public void Awake()
     {

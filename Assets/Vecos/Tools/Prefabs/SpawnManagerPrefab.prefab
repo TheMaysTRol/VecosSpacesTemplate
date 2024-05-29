@@ -55,6 +55,11 @@ MonoBehaviour:
   - {fileID: 1576996227953725949}
   - {fileID: 6295102447044562621}
   - {fileID: 1003149244742118538}
+  testType: 0
+  vrPlayer: {fileID: 7137007696216910908, guid: 2f82d5a1fbf36f845b64c25178c82751,
+    type: 3}
+  pcPlayer: {fileID: 7016709725922348996, guid: ac067cfeab8967843b0696188a481e31,
+    type: 3}
 --- !u!1 &4692132402046294502
 GameObject:
   m_ObjectHideFlags: 0
